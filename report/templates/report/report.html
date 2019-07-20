@@ -1,0 +1,39 @@
+{% extends "C:\Goradar\home\templates\base.html" %}
+
+{% block title %}Сообщить о проблеме{% endblock %}
+
+{% block content %}
+{% if username %}
+	<div class = "maps">
+		<div id='map' style='width: 595px; height: 678px;'></div>
+		<script>
+			mapboxgl.accessToken = 'pk.eyJ1IjoiaXptYWlsMjcwOCIsImEiOiJjanlhMDJmbjQwOTBrM2xwN2MxM2k5ajN6In0.N330cx9x6wWkXkFsJW9Rjg';
+			var map = new mapboxgl.Map({
+			style: 'mapbox://styles/mapbox/streets-v11',
+			center: {
+			lng: 39.90000000000000,
+			lat: 43.50000000000009
+			},
+			zoom: 10,
+			container: 'map',
+			antialias: true
+			});
+			osm_map.addControl(new mapboxgl.NavigationControl());
+
+      		marker = new mapboxgl.Marker()
+        	.setLngLat([13.291408333333237, 42.628386111111126])
+        	.addTo(osm_map);
+		</script>
+	</div>
+	<div class ="report">
+		<h1>Сообщить о проблеме</h1>
+	    <form method="POST" class="post-form">
+	    	{% csrf_token %}
+	        {{ form.as_p }}
+	        <button type="submit" class="save btn btn-default">Выбрать</button>
+	    </form>
+{% else %}
+	<h1>Вы не авторизованы</h1>
+    <p>Пожалуйста, <a href="/auth/login/"><font color ="black">авторизуйтесь</font></a></p>
+{% endif %}
+{% endblock %}

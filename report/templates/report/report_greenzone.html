@@ -1,0 +1,46 @@
+{% extends "C:\Goradar\home\templates\base.html" %}
+
+{% block title %}Сообщить о проблеме{% endblock %}
+
+{% block content %}
+{% if username %}
+	<div class = "maps">
+		<div id='map' style='width: 595px; height: 678px;'></div>
+		<script>
+			mapboxgl.accessToken = 'pk.eyJ1IjoiaXptYWlsMjcwOCIsImEiOiJjanlhMDJmbjQwOTBrM2xwN2MxM2k5ajN6In0.N330cx9x6wWkXkFsJW9Rjg';
+			var map = new mapboxgl.Map({
+			style: 'mapbox://styles/mapbox/streets-v11',
+			center: {
+			lng: 39.90000000000000,
+			lat: 43.50000000000009
+			},
+			zoom: 10,
+			container: 'map',
+			antialias: true
+			});
+			osm_map.addControl(new mapboxgl.NavigationControl());
+
+      		marker = new mapboxgl.Marker()
+        	.setLngLat([13.291408333333237, 42.628386111111126])
+        	.addTo(osm_map);
+		</script>
+	</div>
+	<div class ="report">
+		<h1>Зеленые зоны</h1>
+	    <form method="POST" class="post-form" enctype="multipart/form-data">
+	    	{% csrf_token %}
+	        {{ form_2.as_p }}
+	        <script src='https://www.google.com/recaptcha/api.js'></script>
+        	<div class="form-group g-recaptcha" data-sitekey="6LcvEq4UAAAAABeqZQKfrNXkoj9lniIkeF9wJ5BC"></div>
+        		{% if messages %}
+            		{% for message in messages %}
+                		{{ message }}
+            		{% endfor %}
+        		{% endif %}
+	        <button type="submit" class="save btn btn-default">Сообщить</button>
+	    </form>
+{% else %}
+	<h1>Вы не авторизованы</h1>
+    <p>Пожалуйста, <a href="/auth/login/"><font color ="black">авторизуйтесь</font></a></p>
+{% endif %}
+{% endblock %}

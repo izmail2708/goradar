@@ -1,0 +1,49 @@
+ body {
+    
+}
+.top-bar{
+	display: block;
+	background-color: #005be3;
+	width: 100%;
+	height: 50px;
+	margin:0 auto;
+	overflow:hidden;
+}
+li{
+	float:left;
+	list-style:none;
+	padding: 0px 0px 0px 50px;
+}
+a {
+	text-decoration: none;
+	font:20px "Roboto" ;
+	color: white;
+}
+a:hover {
+	color: #c6ea9f;
+	text-decoration: none;
+	text-shadow:none;
+}
+.radar{
+	background-image: url('img/radar.png');
+	width: 500px;
+	height: 500px;
+	margin:0 auto;
+	overflow:hidden;
+	margin-top: 100px;
+	border-radius: 40px;
+	-moz-border-radius: 40px;
+	-webkit-border-radius: 40px;
+}
+.signin{
+	float:right;
+	padding-right: 50px;
+}
+
+.register{
+	background-color: white;
+	width: 1000px;
+	height: 500px;
+	margin-top: 100px;
+	margin-left: 100px;
+}

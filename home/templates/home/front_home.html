@@ -1,0 +1,56 @@
+{% load static %}
+<html>
+    <head>
+        <title>Горадар</title>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="{% static 'css/foundation.css' %}">
+        <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="shortcut icon" href="/icon.png" type="image/png">
+        <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Roboto&display=swap" rel="stylesheet">
+    </head>
+    <body>
+                {% if username %}
+                    <div data-sticky-container>
+                        <nav class="top-bar sticky" data-topbar role="navigation" data-sticky>
+                            <div class="top-bar-left">
+                                <ul class="menu">
+                                    <li class="menu-text"><a href="/">Главная страница</a></li>
+                                    <li class="menu-text"><a href="http://goradarsmartcity.tilda.ws">О нас</a></li>
+                                </ul>
+                            </div>
+                            <div class="top-bar-right">
+                                <ul class="menu"> 
+                                    <li class="menu-text"><a href = "/auth/logout/">Выйти ({{username}})</a></li>  
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                {% else %}
+                    <div data-sticky-container>
+                        <nav class="top-bar sticky" data-topbar role="navigation" data-sticky>
+                            <div class="top-bar-left">
+                                <ul class="menu">
+                                    <li class="menu-text"><a href="/">Главная страница</a></li>
+                                    <li class="menu-text"><a href="http://goradarsmartcity.tilda.ws">О нас</a></li>
+                                </ul>
+                            </div>
+                            <div class="top-bar-right">
+                                <ul class="menu"> 
+                                    <li class="menu-text"><a href = "/auth/login/">Войти</a></li>  
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>                
+                {% endif %}
+        <div class = "radar">
+                <div class = "link1">
+                    <a href="/report/">Сообщить</br>о</br>проблеме</a>
+                </div> 
+                <div class = "link2">
+                    <a href="1.htmsdl">Провести</br>исследование</a>   
+                </div> 
+        </div>
+    </body>
+</html>
